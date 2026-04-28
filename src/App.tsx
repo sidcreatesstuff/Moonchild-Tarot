@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Moon, Star, Sun, Sparkles, CreditCard, 
+  Moon, Star, Sparkles, CreditCard, 
   ShieldCheck, Mail, Instagram, ChevronRight,
   MessageSquare, Quote, Heart, CheckCircle2,
   BookOpen, RefreshCcw, Send, UserCheck, MessageCircle,
@@ -391,7 +391,7 @@ const DailyCardInteraction = () => {
       const randomIndex = Math.floor(Math.random() * TAROT_CARDS.length);
       setDrawnCard(TAROT_CARDS[randomIndex]);
       setIsDrawing(false);
-    }, 1200);
+    }, 2000);
   };
 
   return (
@@ -408,13 +408,80 @@ const DailyCardInteraction = () => {
               <motion.div 
                 key="back"
                 exit={{ opacity: 0, scale: 0.9, rotate: -5 }}
-                className="w-64 md:w-72 h-[380px] md:h-[420px] glass-heavy rounded-[2.5rem] md:rounded-[3rem] border-2 border-white/10 relative flex flex-col items-center justify-center group cursor-pointer shadow-2xl"
-                onClick={drawCard}
+                className="w-64 md:w-72 h-[380px] md:h-[420px] glass-heavy rounded-[2.5rem] md:rounded-[3rem] border-2 border-white/10 relative flex flex-col items-center justify-center group cursor-pointer shadow-2xl overflow-hidden"
+                onClick={!isDrawing ? drawCard : undefined}
               >
-                <div className="absolute inset-6 md:inset-8 border border-mystic-gold/10 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center justify-center">
-                   <Sparkles className={`w-10 h-10 md:w-12 md:h-12 text-mystic-gold/40 ${isDrawing ? 'animate-spin' : 'group-hover:scale-125'} transition-all`} />
+                <div className="absolute inset-6 md:inset-8 border border-mystic-gold/10 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center justify-center overflow-hidden">
+                   {isDrawing && (
+                     <>
+                        <motion.div 
+                           initial={{ opacity: 0 }}
+                           animate={{ opacity: [0.2, 0.5, 0.2] }}
+                           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                           className="absolute inset-0 bg-mystic-gold/30 blur-3xl"
+                        />
+                        {/* Star Particles */}
+                        {[...Array(6)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ 
+                              opacity: [0, 1, 0], 
+                              scale: [0, 1, 0],
+                              x: (Math.random() - 0.5) * 100,
+                              y: (Math.random() - 0.5) * 100
+                            }}
+                            transition={{ 
+                              duration: 1.5, 
+                              repeat: Infinity, 
+                              delay: i * 0.2,
+                              ease: "easeOut"
+                            }}
+                            className="absolute w-1 h-1 bg-mystic-gold rounded-full"
+                          />
+                        ))}
+                     </>
+                   )}
+                   
+                   <div className="relative">
+                      {isDrawing && (
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          className="absolute -inset-8 border-2 border-dashed border-mystic-gold/20 rounded-full"
+                        />
+                      )}
+                      <motion.div
+                        animate={isDrawing ? { 
+                          scale: [1, 1.3, 1],
+                          opacity: [0.4, 1, 0.4] 
+                        } : {}}
+                        transition={isDrawing ? { 
+                          duration: 1, 
+                          repeat: Infinity, 
+                          ease: "easeInOut" 
+                        } : {}}
+                      >
+                       <Sparkles className={`w-10 h-10 md:w-12 md:h-12 text-mystic-gold/40 ${!isDrawing ? 'group-hover:scale-125' : ''} transition-all`} />
+                      </motion.div>
+                   </div>
                 </div>
-                <span className="relative z-10 text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.6em] uppercase text-mystic-gold/40 font-display mt-32 md:mt-40">Reveal Moment</span>
+                
+                <div className="mt-32 md:mt-40 text-center space-y-3 relative z-10">
+                   <span className="text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.6em] uppercase text-mystic-gold font-display font-medium">
+                     {isDrawing ? 'Aligning Energies...' : 'Reveal Moment'}
+                   </span>
+                   <div className="h-[1px] w-12 bg-mystic-gold/20 mx-auto relative overflow-hidden">
+                      {isDrawing && (
+                        <motion.div 
+                          initial={{ left: "-100%" }}
+                          animate={{ left: "100%" }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                          className="absolute inset-0 bg-mystic-gold w-1/2"
+                        />
+                      )}
+                   </div>
+                </div>
               </motion.div>
             ) : (
               <motion.div 
@@ -457,7 +524,6 @@ const Footer = () => {
           <div className="flex gap-4 md:gap-6">
             <a href={SOCIALS.instagram} target="_blank" className="p-3 md:p-4 glass rounded-full hover:bg-mystic-gold hover:text-mystic-indigo transition-all"><Instagram size={18} /></a>
             <a href={SOCIALS.reddit} target="_blank" className="p-3 md:p-4 glass rounded-full hover:bg-mystic-gold hover:text-mystic-indigo transition-all"><MessageSquare size={18} /></a>
-            <a href={SOCIALS.whatsapp} target="_blank" className="p-3 md:p-4 glass rounded-full hover:bg-mystic-gold hover:text-mystic-indigo transition-all"><Sun size={18} /></a>
           </div>
         </div>
         
