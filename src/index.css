@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-mystic-indigo: #0a0a0f;
+  --color-mystic-lavender: #b8a9c9;
+  --color-mystic-pink: #f8d7da;
+  --color-mystic-blue: #d1ecf1;
+  --color-mystic-gold: #d4af37;
+  --color-mystic-cream: #f8f7f2;
+  --color-mystic-dark: #0a0a0f;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-mystic-indigo)] text-[var(--color-mystic-cream)] font-sans antialiased selection:bg-mystic-gold/40;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(184, 169, 201, 0.05) 0%, transparent 70%);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight font-light text-white;
+  }
+}
+
+.glass {
+  @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)];
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.glass-heavy {
+  @apply bg-white/10 backdrop-blur-[40px] border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)];
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.glow-gold {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+}
+
+.glow-lavender {
+  filter: drop-shadow(0 0 15px rgba(184, 169, 201, 0.3));
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 8s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
