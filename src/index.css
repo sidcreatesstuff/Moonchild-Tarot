@@ -10,16 +10,33 @@
   --color-mystic-lavender: #b8a9c9;
   --color-mystic-pink: #f8d7da;
   --color-mystic-blue: #d1ecf1;
+  --color-mystic-shiva: #00c2ff;
   --color-mystic-gold: #d4af37;
   --color-mystic-cream: #f8f7f2;
   --color-mystic-dark: #0a0a0f;
+
+  --animate-twinkle-slow: twinkle 8s ease-in-out infinite;
+  --animate-pulse-slow: pulse-glow 12s ease-in-out infinite;
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-[var(--color-mystic-indigo)] text-[var(--color-mystic-cream)] font-sans antialiased selection:bg-mystic-gold/40;
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(184, 169, 201, 0.05) 0%, transparent 70%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4 {
@@ -43,6 +60,10 @@
 
 .glow-lavender {
   filter: drop-shadow(0 0 15px rgba(184, 169, 201, 0.3));
+}
+
+.glow-shiva {
+  filter: drop-shadow(0 0 20px rgba(0, 194, 255, 0.4));
 }
 
 .shimmer {

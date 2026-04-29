@@ -74,11 +74,11 @@ export const TESTIMONIALS = [
 ];
 
 export const HOW_IT_WORKS = [
-  { icon: <BookOpen className="w-5 h-5" />, text: 'Choose your desired reading and category.' },
-  { icon: <CreditCard className="w-5 h-5" />, text: 'Make payment via UPI, Razorpay, or PayPal.' },
-  { icon: <UserCheck className="w-5 h-5" />, text: 'Share your details (Initials & DOB) and your question.' },
-  { icon: <RefreshCcw className="w-5 h-5" />, text: 'Wait as I align with the cosmic energies.' },
-  { icon: <Send className="w-5 h-5" />, text: 'Receive your reading within 12 - 24 hours.' },
+  { icon: <BookOpen className="w-5 h-5" />, title: 'Selection', text: 'Choose your desired reading and category.' },
+  { icon: <CreditCard className="w-5 h-5" />, title: 'Payment', text: 'Make payment via UPI, Razorpay, or PayPal.' },
+  { icon: <UserCheck className="w-5 h-5" />, title: 'Details', text: 'Share your details (Initials & DOB) and your question.' },
+  { icon: <RefreshCcw className="w-5 h-5" />, title: 'Alignment', text: 'Wait as I align with the cosmic energies.' },
+  { icon: <Send className="w-5 h-5" />, title: 'Deliverance', text: 'Receive your reading within 12 - 24 hours.' },
 ];
 
 export const POLICIES = [
