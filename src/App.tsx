@@ -378,7 +378,6 @@ const HowItWorksSection = () => (
                 {step.text}
               </p>
             </div>
-            {idx < 4 && <div className="hidden lg:block absolute top-10 right-[-15%] w-1/4 h-[1px] bg-gradient-to-r from-mystic-gold/30 to-transparent" />}
           </div>
         ))}
       </div>
