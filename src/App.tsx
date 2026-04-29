@@ -208,12 +208,14 @@ const Hero = () => (
       </p>
       
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-        <button 
-          onClick={() => document.getElementById('daily-card')?.scrollIntoView({ behavior: 'smooth' })}
-          className="w-full sm:w-auto px-10 md:px-12 py-5 bg-mystic-gold text-mystic-indigo rounded-full font-display uppercase tracking-[0.2em] text-[10px] md:text-[11px] font-bold hover:scale-105 transition-transform active:scale-95 shadow-2xl shadow-mystic-gold/20"
+        <a 
+          href={SOCIALS.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full sm:w-auto px-10 md:px-12 py-5 bg-mystic-gold text-mystic-indigo rounded-full font-display uppercase tracking-[0.2em] text-[10px] md:text-[11px] font-bold hover:scale-105 transition-transform active:scale-95 shadow-2xl shadow-mystic-gold/20 text-center"
         >
           Begin A Reading
-        </button>
+        </a>
         <button 
           onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
           className="w-full sm:w-auto px-10 md:px-12 py-5 glass rounded-full font-display uppercase tracking-[0.2em] text-[10px] md:text-[11px] hover:bg-white/10 transition-colors border-white/5"
